@@ -10,13 +10,13 @@ const socialLinks = [
 ];
 ---
 
-<footer class="bg-gray-900 text-white py-12">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<footer class="bg-google-grey-900 text-white py-16">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
       <!-- About section -->
       <div>
         <h3 class="text-xl font-bold mb-4 text-devfest-blue">DevFest Roma 2025</h3>
-        <p class="text-gray-400 text-sm">
+        <p class="text-google-grey-400 leading-relaxed">
           Il più grande evento per sviluppatori a Roma. Organizzato da Google Developer Groups.
         </p>
       </div>
@@ -24,24 +24,24 @@ const socialLinks = [
       <!-- Quick links -->
       <div>
         <h3 class="text-xl font-bold mb-4 text-devfest-green">Link Utili</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-          <li><a href="#tracks" class="text-gray-400 hover:text-white transition-colors">Tracks</a></li>
-          <li><a href="#sponsors" class="text-gray-400 hover:text-white transition-colors">Sponsor</a></li>
-          <li><a href="#location" class="text-gray-400 hover:text-white transition-colors">Location</a></li>
+        <ul class="space-y-2">
+          <li><a href="#about" class="text-google-grey-400 hover:text-white transition-colors inline-block py-1">About</a></li>
+          <li><a href="#tracks" class="text-google-grey-400 hover:text-white transition-colors inline-block py-1">Tracks</a></li>
+          <li><a href="#sponsors" class="text-google-grey-400 hover:text-white transition-colors inline-block py-1">Sponsor</a></li>
+          <li><a href="#location" class="text-google-grey-400 hover:text-white transition-colors inline-block py-1">Location</a></li>
         </ul>
       </div>
 
       <!-- Social links -->
       <div>
         <h3 class="text-xl font-bold mb-4 text-devfest-yellow">Social</h3>
-        <div class="flex space-x-4">
+        <div class="flex gap-3">
           {socialLinks.map(link => (
             <a 
               href={link.url} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="text-gray-400 hover:text-white transition-colors"
+              class="text-google-grey-400 hover:text-white transition-all hover:scale-110 p-2 rounded-google hover:bg-white/10"
               aria-label={link.name}
             >
               {link.icon === 'github' && (
@@ -63,8 +63,8 @@ const socialLinks = [
     </div>
 
     <!-- Copyright -->
-    <div class="border-t border-gray-800 pt-8 text-center">
-      <p class="text-gray-400 text-sm">
+    <div class="border-t border-google-grey-800 pt-8 text-center">
+      <p class="text-google-grey-400">
         © {currentYear} DevFest Roma. Organizzato da Google Developer Groups Roma.
       </p>
     </div>

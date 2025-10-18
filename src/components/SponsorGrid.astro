@@ -7,29 +7,29 @@ const goldSponsors = sponsors.filter(s => s.tier === 'Gold');
 const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
 ---
 
-<section id="sponsors" class="py-16 bg-gray-50">
-  <div class="container mx-auto px-4">
+<section id="sponsors" class="py-20 bg-white">
+  <div class="container mx-auto px-6">
     <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold mb-4">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 font-google-sans-display">
         <span class="text-devfest-blue">I Nostri</span>
         <span class="text-devfest-red"> Sponsor</span>
       </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
+      <p class="text-google-grey-700 text-lg max-w-2xl mx-auto">
         Grazie alle aziende che supportano DevFest Roma 2025 e la comunità degli sviluppatori.
       </p>
     </div>
 
     <!-- Main Sponsors -->
     {mainSponsors.length > 0 && (
-      <div class="mb-12">
-        <h3 class="text-2xl font-bold text-center mb-6 text-gray-700">Main</h3>
-        <div class="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-center mb-8 text-google-grey-800">Main</h3>
+        <div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
           {mainSponsors.map(sponsor => (
             <a 
               href={sponsor.website} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center justify-center w-full md:w-80"
+              class="bg-white p-8 rounded-google-xl shadow-material-2 hover:shadow-material-3 transition-all hover:-translate-y-1 flex items-center justify-center w-full md:w-80 border border-google-grey-200"
             >
               <img 
                 src={sponsor.logo} 
@@ -44,15 +44,15 @@ const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
 
     <!-- Platinum Sponsors -->
     {platinumSponsors.length > 0 && (
-      <div class="mb-12">
-        <h3 class="text-2xl font-bold text-center mb-6 text-gray-700">Platinum</h3>
-        <div class="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-center mb-8 text-google-grey-800">Platinum</h3>
+        <div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
           {platinumSponsors.map(sponsor => (
             <a 
               href={sponsor.website} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center justify-center w-full md:w-80"
+              class="bg-white p-8 rounded-google-xl shadow-material-2 hover:shadow-material-3 transition-all hover:-translate-y-1 flex items-center justify-center w-full md:w-80 border border-google-grey-200"
             >
               <img 
                 src={sponsor.logo} 
@@ -67,15 +67,15 @@ const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
 
     <!-- Gold Sponsors -->
     {goldSponsors.length > 0 && (
-      <div class="mb-12">
-        <h3 class="text-2xl font-bold text-center mb-6 text-gray-700">Gold</h3>
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-center mb-8 text-google-grey-800">Gold</h3>
         <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
           {goldSponsors.map(sponsor => (
             <a 
               href={sponsor.website} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center justify-center w-40 md:w-56"
+              class="bg-white p-6 rounded-google-lg shadow-material-2 hover:shadow-material-3 transition-all hover:-translate-y-1 flex items-center justify-center w-40 md:w-56 border border-google-grey-200"
             >
               <img 
                 src={sponsor.logo} 
@@ -91,14 +91,14 @@ const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
     <!-- Silver Sponsors -->
     {silverSponsors.length > 0 && (
       <div>
-        <h3 class="text-2xl font-bold text-center mb-6 text-gray-700">Silver</h3>
+        <h3 class="text-2xl font-bold text-center mb-8 text-google-grey-800">Silver</h3>
         <div class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
           {silverSponsors.map(sponsor => (
             <a 
               href={sponsor.website} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center justify-center w-32 md:w-44"
+              class="bg-white p-4 rounded-google-lg shadow-material-1 hover:shadow-material-2 transition-all hover:-translate-y-0.5 flex items-center justify-center w-32 md:w-44 border border-google-grey-200"
             >
               <img 
                 src={sponsor.logo} 

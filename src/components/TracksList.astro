@@ -9,55 +9,55 @@ const trackColors = [
 ];
 ---
 
-<section id="tracks" class="py-16 bg-white">
-  <div class="container mx-auto px-4">
+<section id="tracks" class="py-20 bg-google-grey-50">
+  <div class="container mx-auto px-6">
     <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold mb-4">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 font-google-sans-display">
         <span class="text-devfest-green">Tracks &</span>
         <span class="text-devfest-yellow"> Talks</span>
       </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
+      <p class="text-google-grey-700 text-lg max-w-2xl mx-auto">
         Scopri i talk e i workshop organizzati per track tematiche. Un'intera giornata dedicata alla tecnologia!
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {tracks.map((track, index) => {
         const colors = trackColors[index % trackColors.length];
         return (
-          <div class={`${colors.bg} border-2 ${colors.border} rounded-lg p-6 hover:shadow-xl transition-shadow`}>
-            <h3 class={`text-2xl font-bold mb-3 ${colors.text}`}>
+          <div class={`bg-white border-2 ${colors.border} rounded-google-xl p-8 hover:shadow-material-3 transition-all shadow-material-1`}>
+            <h3 class={`text-2xl font-bold mb-4 ${colors.text}`}>
               {track.name}
             </h3>
-            <p class="text-gray-700 mb-6">
+            <p class="text-google-grey-700 mb-6 leading-relaxed">
               {track.description}
             </p>
             
-            <div class="space-y-4">
+            <div class="space-y-3">
               {track.talkIds.map(talkId => {
                 const talk = talks[talkId];
                 return (
-                  <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200 relative talk-card">
+                  <div class="bg-google-grey-50 rounded-google-lg p-4 shadow-material-1 border border-google-grey-200 relative talk-card hover:shadow-material-2 transition-all">
                     <div class="flex items-start justify-between mb-2">
-                      <h4 class="font-semibold text-gray-900 flex-1">
+                      <h4 class="font-semibold text-google-grey-900 flex-1">
                         {talk.title}
                       </h4>
-                      <span class={`${colors.text} font-mono text-sm font-bold ml-2`}>
+                      <span class={`${colors.text} font-mono text-sm font-bold ml-2 bg-white px-2 py-1 rounded`}>
                         {talk.time}
                       </span>
                     </div>
-                    <p class="text-gray-600 text-sm flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <p class="text-google-grey-600 text-sm flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
                       </svg>
                       {talk.speaker}
                     </p>
                     
                     {/* Tooltip */}
-                    <div class="talk-tooltip absolute z-10 bg-gray-900 text-white text-sm rounded-lg p-4 shadow-xl max-w-md w-max hidden opacity-0 transition-opacity duration-200 pointer-events-none">
+                    <div class="talk-tooltip absolute z-10 bg-google-grey-900 text-white text-sm rounded-google-lg p-4 shadow-material-4 max-w-md w-max hidden opacity-0 transition-opacity duration-200 pointer-events-none">
                       <div class="relative">
                         <p class="leading-relaxed">{talk.description}</p>
-                        <div class="absolute -top-2 left-4 w-4 h-4 bg-gray-900 transform rotate-45"></div>
+                        <div class="absolute -top-2 left-4 w-4 h-4 bg-google-grey-900 transform rotate-45"></div>
                       </div>
                     </div>
                   </div>
