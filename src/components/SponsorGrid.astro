@@ -1,0 +1,115 @@
+---
+import { sponsors } from '../data/sponsors';
+
+const mainSponsors = sponsors.filter(s => s.tier === 'Main');
+const platinumSponsors = sponsors.filter(s => s.tier === 'Platinum');
+const goldSponsors = sponsors.filter(s => s.tier === 'Gold');
+const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
+---
+
+<section id="sponsors" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4">
+        <span class="text-devfest-blue">I Nostri</span>
+        <span class="text-devfest-red"> Sponsor</span>
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Grazie alle aziende che supportano DevFest Roma 2025 e la comunità degli sviluppatori.
+      </p>
+    </div>
+
+    <!-- Main Sponsors -->
+    {mainSponsors.length > 0 && (
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-center mb-6 text-gray-700">Main</h3>
+        <div class="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
+          {mainSponsors.map(sponsor => (
+            <a 
+              href={sponsor.website} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center justify-center w-full md:w-80"
+            >
+              <img 
+                src={sponsor.logo} 
+                alt={`${sponsor.name} logo`}
+                class="max-w-full h-auto"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Platinum Sponsors -->
+    {platinumSponsors.length > 0 && (
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-center mb-6 text-gray-700">Platinum</h3>
+        <div class="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
+          {platinumSponsors.map(sponsor => (
+            <a 
+              href={sponsor.website} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center justify-center w-full md:w-80"
+            >
+              <img 
+                src={sponsor.logo} 
+                alt={`${sponsor.name} logo`}
+                class="max-w-full h-auto"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Gold Sponsors -->
+    {goldSponsors.length > 0 && (
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-center mb-6 text-gray-700">Gold</h3>
+        <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
+          {goldSponsors.map(sponsor => (
+            <a 
+              href={sponsor.website} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center justify-center w-40 md:w-56"
+            >
+              <img 
+                src={sponsor.logo} 
+                alt={`${sponsor.name} logo`}
+                class="max-w-full h-auto"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Silver Sponsors -->
+    {silverSponsors.length > 0 && (
+      <div>
+        <h3 class="text-2xl font-bold text-center mb-6 text-gray-700">Silver</h3>
+        <div class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+          {silverSponsors.map(sponsor => (
+            <a 
+              href={sponsor.website} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center justify-center w-32 md:w-44"
+            >
+              <img 
+                src={sponsor.logo} 
+                alt={`${sponsor.name} logo`}
+                class="max-w-full h-auto"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
