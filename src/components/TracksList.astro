@@ -25,15 +25,21 @@ const trackColors = [
       {tracks.map((track, index) => {
         const colors = trackColors[index % trackColors.length];
         return (
-          <div class={`bg-white border-2 ${colors.border} rounded-google-xl p-8 hover:shadow-material-3 transition-all shadow-material-1`}>
-            <h3 class={`text-2xl font-bold mb-4 ${colors.text}`}>
-              {track.name}
-            </h3>
-            <p class="text-google-grey-700 mb-6 leading-relaxed">
-              {track.description}
-            </p>
-            
-            <div class="space-y-3">
+          <div class={`track-item bg-white border-2 ${colors.border} rounded-google-xl p-8 hover:shadow-material-3 transition-all shadow-material-1`}>
+            <button class="track-header md:cursor-default w-full text-left mb-4 flex items-center justify-between md:pointer-events-none" aria-label="Toggle track details">
+              <h3 class={`text-2xl font-bold ${colors.text}`}>
+                {track.name}
+              </h3>
+              <svg class="chevron w-6 h-6 md:hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="track-content">
+              <p class="text-google-grey-700 mb-6 leading-relaxed">
+                {track.description}
+              </p>
+              
+              <div class="space-y-3">
               {track.talkIds.map(talkId => {
                 const talk = talks[talkId];
                 return (
@@ -63,6 +69,7 @@ const trackColors = [
                   </div>
                 );
               })}
+              </div>
             </div>
           </div>
         );
@@ -71,7 +78,75 @@ const trackColors = [
   </div>
 </section>
 
+<script is:inline>
+  (function() {
+    function setupTrackCollapse() {
+      const trackItems = document.querySelectorAll('.track-item');
+      
+      trackItems.forEach(function(track) {
+        const header = track.querySelector('.track-header');
+        const content = track.querySelector('.track-content');
+        
+        if (!header || !content) return;
+        
+        // Check if already initialized
+        if (header.dataset.initialized === 'true') return;
+        header.dataset.initialized = 'true';
+        
+        // Start collapsed on mobile
+        if (window.innerWidth < 768) {
+          track.classList.add('collapsed');
+        }
+        
+        header.addEventListener('click', function(e) {
+          // Only work on mobile
+          if (window.innerWidth >= 768) return;
+          
+          e.preventDefault();
+          track.classList.toggle('collapsed');
+        });
+      });
+    }
+    
+    // Run on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupTrackCollapse);
+    } else {
+      setupTrackCollapse();
+    }
+    
+    // Re-run on Astro page transitions
+    document.addEventListener('astro:page-load', setupTrackCollapse);
+  })();
+</script>
+
 <style>
+  /* Mobile collapse functionality */
+  @media (max-width: 767px) {
+    .track-item.collapsed .track-content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      margin-bottom: 0;
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out, margin-bottom 0.3s ease-out;
+    }
+    
+    .track-item:not(.collapsed) .track-content {
+      max-height: 5000px;
+      opacity: 1;
+      transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+    }
+    
+    .track-item.collapsed .chevron {
+      transform: rotate(-90deg);
+    }
+    
+    .track-header {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+
   /* Desktop-only hover behavior */
   @media (hover: hover) and (pointer: fine) {
     .talk-card:hover .talk-tooltip {
