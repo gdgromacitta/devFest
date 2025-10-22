@@ -52,6 +52,12 @@ import TracksList from '../components/TracksList.astro';
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
+            href="#speakers" 
+            class="inline-flex items-center justify-center gap-2 bg-white text-devfest-blue border-2 border-devfest-blue font-medium px-8 py-4 rounded-google-lg hover:bg-devfest-blue/10 transition-all shadow-material-1"
+          >
+            Scopri gli speaker
+          </a>
+          <a 
             href="https://gdg.community.dev/events/details/google-gdg-roma-citta-presents-devfest-roma-2025/" 
             target="_blank"
             rel="noopener noreferrer"
@@ -66,7 +72,7 @@ import TracksList from '../components/TracksList.astro';
             href="#tracks" 
             class="inline-flex items-center justify-center gap-2 bg-white text-devfest-blue border-2 border-devfest-blue font-medium px-8 py-4 rounded-google-lg hover:bg-devfest-blue/10 transition-all shadow-material-1"
           >
-            Scopri di più
+            Scopri la schedule
           </a>
         </div>
       </div>
@@ -138,6 +144,33 @@ import TracksList from '../components/TracksList.astro';
 
   <!-- Tracks Section -->
   <TracksList />
+
+  <!-- Speakers Section -->
+  <section id="speakers" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 font-google-sans-display">
+          <span class="text-devfest-green">I Nostri</span>
+          <span class="text-devfest-red"> Speaker</span>
+        </h2>
+        <p class="text-google-grey-700 text-lg md:text-xl max-w-3xl mx-auto">
+          Esperti del settore tech pronti a condividere la loro conoscenza ed esperienza
+        </p>
+      </div>
+
+      <div class="max-w-7xl mx-auto" id="speakers-container">
+        <iframe 
+          id="speakers-iframe"
+          src="https://sessionize.com/api/v2/od2jlmwc/view/SpeakerWall"
+          width="100%"
+          class="speakers-iframe"
+          scrolling="no"
+          loading="lazy"
+          title="DevFest Roma 2025 Speakers"
+        ></iframe>
+      </div>
+    </div>
+  </section>
 
   <!-- Sponsors Section -->
   <SponsorGrid />
@@ -313,5 +346,67 @@ import TracksList from '../components/TracksList.astro';
   html {
     scroll-behavior: smooth;
   }
+
+  /* Responsive iframe heights for speaker section */
+  .speakers-iframe {
+    border: none;
+    width: 100%;
+    display: block;
+    /* Mobile: single column layout needs much more height */
+    min-height: 5000px;
+  }
+
+  /* Tablet and above: grid layout takes less vertical space */
+  @media (min-width: 768px) {
+    .speakers-iframe {
+      min-height: 3500px;
+    }
+  }
+
+  /* Desktop: more columns, even less height needed */
+  @media (min-width: 1024px) {
+    .speakers-iframe {
+      min-height: 2000px;
+    }
+  }
+
+  /* Large desktop: maximum columns */
+  @media (min-width: 1280px) {
+    .speakers-iframe {
+      min-height: 1600px;
+    }
+  }
 </style>
+
+<script is:inline>
+  // Listen for height messages from Sessionize iframe
+  window.addEventListener('message', function(event) {
+    // Check if message is from Sessionize
+    if (event.origin === 'https://sessionize.com') {
+      const iframe = document.getElementById('speakers-iframe');
+      if (!iframe) return;
+      
+      let height = null;
+      
+      // Try different message formats that Sessionize might use
+      if (typeof event.data === 'number') {
+        height = event.data;
+      } else if (event.data && typeof event.data === 'object') {
+        height = event.data.height || event.data.frameHeight || event.data.scrollHeight;
+      } else if (typeof event.data === 'string') {
+        try {
+          const parsed = JSON.parse(event.data);
+          height = parsed.height || parsed.frameHeight || parsed.scrollHeight;
+        } catch (e) {
+          // Not JSON, ignore
+        }
+      }
+      
+      if (height && height > 100) {
+        iframe.style.height = height + 'px';
+        console.log('Iframe height updated to:', height + 'px');
+      }
+    }
+  });
+</script>
 
