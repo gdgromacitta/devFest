@@ -5,6 +5,7 @@ const mainSponsors = sponsors.filter(s => s.tier === 'Main');
 const platinumSponsors = sponsors.filter(s => s.tier === 'Platinum');
 const goldSponsors = sponsors.filter(s => s.tier === 'Gold');
 const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
+const partnerSponsors = sponsors.filter(s => s.tier === 'Partner');
 ---
 
 <section id="sponsors" class="py-20 bg-white">
@@ -108,6 +109,29 @@ const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
             </a>
           ))}
         </div>
+      </div>
+    )}
+
+    {partnerSponsors.length > 0 && (
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-center mb-8 text-google-grey-800">Partner</h3>
+        <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
+          {partnerSponsors.map(sponsor => (
+            <a 
+              href={sponsor.website} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="bg-white p-6 rounded-google-lg shadow-material-2 hover:shadow-material-3 transition-all hover:-translate-y-1 flex items-center justify-center w-40 md:w-56 border border-google-grey-200"
+            >
+              <img 
+                src={sponsor.logo} 
+                alt={`${sponsor.name} logo`}
+                class="max-w-full h-auto"
+              />
+            </a>
+          ))}
+        </div>
+        <h4 class="text-2xl font-bold text-center mb-8 text-google-grey-800">{sponsor.text} Partner</h3>
       </div>
     )}
   </div>
