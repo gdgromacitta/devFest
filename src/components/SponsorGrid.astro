@@ -6,7 +6,9 @@ const platinumSponsors = sponsors.filter(s => s.tier === 'Platinum');
 const goldSponsors = sponsors.filter(s => s.tier === 'Gold');
 const silverSponsors = sponsors.filter(s => s.tier === 'Silver');
 const partnerSponsors = sponsors.filter(s => s.tier === 'Partner');
+const gdgSponsors = sponsors.filter(s => s.tier === 'GDG');
 const communitySponsors = sponsors.filter(s => s.tier === 'Community');
+const activitySponsors = sponsors.filter(s => s.tier === 'Activity');
 ---
 
 <section id="sponsors" class="py-20 bg-white">
@@ -140,10 +142,62 @@ const communitySponsors = sponsors.filter(s => s.tier === 'Community');
 
     <!-- Community Sponsors -->
     {communitySponsors.length > 0 && (
-      <div>
+      <div class="mb-16">
         <h3 class="text-2xl font-bold text-center mb-8 text-google-grey-800">Community</h3>
         <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
           {communitySponsors.map(sponsor => (
+            <div class="flex flex-col items-center gap-3">
+              <a 
+                href={sponsor.website} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="bg-white rounded-full shadow-material-1 hover:shadow-material-2 transition-all hover:-translate-y-0.5 flex items-center justify-center w-44 h-44 md:w-52 md:h-52 border border-google-grey-200 overflow-hidden p-6"
+              >
+                <img 
+                  src={sponsor.logo} 
+                  alt={`${sponsor.name} logo`}
+                  class="max-w-full max-h-full object-contain"
+                />
+              </a>
+              <h4 class="text-sm font-medium text-center text-google-grey-600">{sponsor.name}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Activity Sponsors -->
+    {activitySponsors.length > 0 && (
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-center mb-8 text-google-grey-800">Activities Sponsor</h3>
+        <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
+          {activitySponsors.map(sponsor => (
+            <div class="flex flex-col items-center gap-3">
+              <a 
+                href={sponsor.website} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="bg-white rounded-full shadow-material-1 hover:shadow-material-2 transition-all hover:-translate-y-0.5 flex items-center justify-center w-44 h-44 md:w-52 md:h-52 border border-google-grey-200 overflow-hidden p-6"
+              >
+                <img 
+                  src={sponsor.logo} 
+                  alt={`${sponsor.name} logo`}
+                  class="max-w-full max-h-full object-contain"
+                />
+              </a>
+              <h4 class="text-sm font-medium text-center text-google-grey-600">{sponsor.name}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- GDG Family -->
+    {gdgSponsors.length > 0 && (
+      <div>
+        <h3 class="text-2xl font-bold text-center mb-8 text-google-grey-800">GDG Family</h3>
+        <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
+          {gdgSponsors.map(sponsor => (
             <div class="flex flex-col items-center gap-3">
               <a 
                 href={sponsor.website} 
