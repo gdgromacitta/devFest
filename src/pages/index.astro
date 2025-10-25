@@ -75,6 +75,20 @@ import TracksList from '../components/TracksList.astro';
             Scopri la schedule
           </a>
         </div>
+        
+        <!-- Second row of buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+          <a 
+            href="#lunch-places" 
+            class="inline-flex items-center justify-center gap-2 bg-devfest-green text-white font-medium px-8 py-4 rounded-google-lg shadow-material-2 hover:shadow-material-4 transition-all hover:-translate-y-1"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            Lunch Places
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -144,6 +158,38 @@ import TracksList from '../components/TracksList.astro';
 
   <!-- Tracks Section -->
   <TracksList />
+
+  <!-- Lunch Places Section -->
+  <section id="lunch-places" class="py-20 bg-google-grey-50">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 font-google-sans-display">
+          <span class="text-devfest-blue">Lunch</span>
+          <span class="text-devfest-red"> Places</span>
+        </h2>
+        <p class="text-google-grey-700 text-lg md:text-xl max-w-3xl mx-auto">
+          Scopri i migliori posti dove pranzare durante la pausa
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-white p-6 rounded-google-xl shadow-material-2 border border-google-grey-200">
+          <div class="aspect-video w-full rounded-google-lg overflow-hidden shadow-material-1">
+            <iframe 
+              src="https://www.google.com/maps/d/u/3/embed?mid=19sWYSo4i1AbQ12UW8ZqZN9RMwpzfMvg&ehbc=2E312F"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mappa dei luoghi per il pranzo durante DevFest Roma 2025"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Speakers Section -->
   <section id="speakers" class="py-20 bg-white">
